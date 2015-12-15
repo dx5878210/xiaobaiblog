@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% if title %}
+    <meta charset="UTF-8">
+    <title>{{ title }}-blog</title>
+    {% else %}
+    <title>blog</title>
+    {% endif %}
+
+</head>
+<body>
+    <div>blog:<a href="/index">home</a> </div>
+    <hr>
+{% with message=get_flashed_messages() %}
+{% if message %}
+<ul>
+    {% for message in message %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+{% block content %}{% endblock %}
+</body>
+</html>
