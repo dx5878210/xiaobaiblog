@@ -4,7 +4,6 @@
 from flask.ext.script import Manager, Server
 from app import app
 
-#test hook14
 manager = Manager(app)
 manager.add_command(
     "runserver",
