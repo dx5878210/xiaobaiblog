@@ -8,6 +8,8 @@ app.config.from_object('config.default')
 app.config.from_pyfile('config.py')
 # Load the file specified by the APP_CONFIG_FILE environment variable
 # app.config.from_envvar('config.')
+
+
 db = SQLAlchemy(app)
 from app import views, models
 
