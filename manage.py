@@ -9,7 +9,7 @@ manager.add_command(
     "runserver",
     Server(
         host="127.0.0.1",
-        port=5000,
+        port=8000,
         use_debugger=True))
 
 if __name__ == '__main__':
