@@ -8,7 +8,11 @@
     <table>
         <tr>
             <td>你的昵称:</td>
-            <td>{{form.nickname(size = 24)}}</td>
+            <td>{{form.nickname(size = 24)}}
+                {% for error in form.errors.nickname %}
+                <br><span style="color: red;">[{{error}}]</span>
+            {% endfor %}
+            </td>
         </tr>
         <tr>
             <td>关于自己:</td>
