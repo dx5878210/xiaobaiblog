@@ -12,7 +12,7 @@ followers = db.Table(
         db.Integer,
         db.ForeignKey('user.id')),
     db.Column(
-        'follower_id',
+        'followed_id',
         db.Integer,
         db.ForeignKey('user.id')))
 
@@ -29,7 +29,7 @@ class User(db.Model):
         'User',
         secondary=followers,
         primaryjoin=(followers.c.follower_id == id),
-        secondaryjoin=(followers.c.follower_id == id),
+        secondaryjoin=(followers.c.followed_id == id),
         backref=db.backref('followers', lazy='dynamic'),
         lazy='dynamic')
 
@@ -79,12 +79,12 @@ class User(db.Model):
 
     def is_following(self, user):
         return self.followed.filter(
-            followers.c.follower_id == user.id).count() > 0
+            followers.c.followed_id == user.id).count() > 0
 
     def followed_posts(self):
         return Post.query.join(
             followers,
-            (followers.c.follower_id == Post.user_id)).filter(
+            (followers.c.followed_id == Post.user_id)).filter(
             followers.c.follower_id == self.id).order_by(
             Post.timestamp.desc())
 

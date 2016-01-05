@@ -11,7 +11,7 @@ from config.default import basedir
 app = Flask(__name__, instance_relative_config=True)
 # Load the default configuration
 app.config.from_object('config.default')
-# app.config.from_pyfile('config.py')
+#app.config.from_pyfile('config.py')
 # Load the file specified by the APP_CONFIG_FILE environment variable
 # app.config.from_envvar('config.')
 
